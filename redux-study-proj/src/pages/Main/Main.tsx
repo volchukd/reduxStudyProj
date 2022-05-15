@@ -6,12 +6,8 @@ export function Main() {
 
     return (
         <div className={'wrapper-main'}>
-            <button
-              onClick={() => {
-                navigate('/second');
-              }}
-            >
-              Navigate
+            <button onClick={ () => {navigate('/second')} }>
+              Инструмент №1
             </button>
         </div>
     )
