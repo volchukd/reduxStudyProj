@@ -1,27 +1,34 @@
-import {createAction, createReducer} from "@reduxjs/toolkit";
+import {createAction, createSlice} from "@reduxjs/toolkit";
 
-const initialState = {
-  count: 0,
-  todos: ['Empty todo'],
-}
+const initialState = [
+  {
+    content: 'todolist',
+    done: false,
+  },
+  {
+    content: 'todolist',
+    done: false,
+  },
+];
 
 interface State {
-  count: number,
   todos: any[];
 }
 
-export const increment = createAction('INCREMENT');
-export const decrement = createAction('DECREMENT');
-
-export default createReducer(initialState, {
-  // @ts-ignore
-  [increment]:  function (state: State) {
-    state.count = state.count + 1
-  },
-  // @ts-ignore
-  [decrement]:  function (state: State) {
-    state.count = state.count - 1
+const todoSlice = createSlice({
+  name: 'todo',
+  initialState: initialState,
+  reducers: {
+    addTodo(items: any, action: any) {
+      const item = {
+        content: action.payload,
+        done: false,
+      };
+      return [...items, item]
+    }
   },
 })
 
-console.log(decrement);
+export const { addTodo } = todoSlice.actions;
+
+export default todoSlice.reducer;
