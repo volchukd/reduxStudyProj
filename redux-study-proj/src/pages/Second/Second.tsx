@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../../store/reducer";
 import { useFormik } from "formik";
 import { State } from '../../store/reducer';
-import './second.css';
 
 export function Second() {
   const navigate = useNavigate();
   const todos = useSelector((state: State) => state.todo);
   const dispatch = useDispatch();
+  console.log(todos);
 
   const formik = useFormik({
     initialValues: {
@@ -28,20 +28,23 @@ export function Second() {
           {/*<img className="heading__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"/>*/}
           <h1 className="heading__title">To-Do List</h1>
         </div>
-        <form className="form">
-          <div>
-            <label className="form__label" htmlFor="todo">~ Today I need to ~</label>
-            <input className="form__input"
-                   type="text"
-                   id="todo"
-                   name="to-do"
-
-                   required />
-            <button className="button"><span>Submit</span></button>
-          </div>
+        <form className="form" onSubmit={formik.handleSubmit}>
+          <label className="form__label" htmlFor="todo">~ Today I need to ~</label>
+          <input className="form__input"
+             type="text"
+             id="todo"
+             name="todo"
+             onChange={formik.handleChange}
+             onBlur={formik.handleBlur}
+             required
+          />
+          <button className="button"><span>Submit</span></button>
         </form>
         <div>
           <ul className="toDoList">
+            {todos.map((item, index) => (
+              <li key={JSON.stringify(item.content + index)}>{item.content}</li>
+            ))}
           </ul>
         </div>
       </div>
