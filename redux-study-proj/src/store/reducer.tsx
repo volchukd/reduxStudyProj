@@ -11,8 +11,8 @@ const initialState = [
   },
 ];
 
-interface State {
-  todos: any[];
+export interface State {
+  todo: {content: string, done: boolean}[];
 }
 
 const todoSlice = createSlice({
