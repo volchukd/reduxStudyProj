@@ -113,6 +113,7 @@ body {
 .toDoList > li {
     position: relative;
     padding: 0.5rem;
+    margin-left: 16px;
 }
 .toDoList > li:hover {
     text-decoration: line-through wavy #24bffb;
@@ -174,4 +175,7 @@ body {
     transform: translateY(4px);
     padding-bottom: 0;
     outline: 0;
+}
+.button-second {
+    margin-top: 20px;
 }

@@ -23,31 +23,38 @@ export function Second() {
     })
 
     return (
-      <div className="container">
-        <div className="heading">
-          {/*<img className="heading__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"/>*/}
-          <h1 className="heading__title">To-Do List</h1>
-        </div>
-        <form className="form" onSubmit={formik.handleSubmit}>
-          <label className="form__label" htmlFor="todo">~ Today I need to ~</label>
-          <input className="form__input"
-             type="text"
-             id="todo"
-             name="todo"
-             onChange={formik.handleChange}
-             onBlur={formik.handleBlur}
-             required
-          />
-          <button className="button"><span>Submit</span></button>
-        </form>
         <div>
-          <ul className="toDoList">
-            {todos.map((item, index) => (
-              <li key={JSON.stringify(item.content + index)}>{item.content}</li>
-            ))}
-          </ul>
+            <div className="container">
+                <div className="heading">
+                    {/*<img className="heading__img" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/756881/laptop.svg"/>*/}
+                    <h1 className="heading__title">To-Do List</h1>
+                </div>
+                <form className="form" onSubmit={formik.handleSubmit}>
+                    <label className="form__label" htmlFor="todo">~ Today I need to ~</label>
+                    <input className="form__input"
+                           type="text"
+                           id="todo"
+                           name="todo"
+                           onChange={formik.handleChange}
+                           onBlur={formik.handleBlur}
+                           required
+                    />
+                    <button className="button"><span>Submit</span></button>
+                </form>
+                <div>
+                    <ul className="toDoList">
+                        {todos.map((item, index) => (
+                            <li key={JSON.stringify(item.content + index)}>{item.content}</li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+                <button className="button-second button"
+                        onClick={() => {
+                            navigate('/');
+                        }}><span>Back</span></button>
+
         </div>
-      </div>
 
   // <div className={'second-wrapper'}>
   //         <button
