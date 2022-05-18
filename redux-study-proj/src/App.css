@@ -179,3 +179,7 @@ body {
 .button-second {
     margin-top: 20px;
 }
+
+.through {
+    text-decoration: line-through;
+}

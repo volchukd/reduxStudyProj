@@ -2,26 +2,35 @@ import React from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo } from "../../store/reducer";
+import { addTodo, deleteTodo, changeDone } from "../../store/reducer";
 import { useFormik } from "formik";
-import { State } from '../../store/reducer';
+import { RootState } from '../../store/toolkit';
+
+import { v4 as uuid } from 'uuid';
 
 export function Second() {
   const navigate = useNavigate();
-  const todos = useSelector((state: State) => state.todo);
+
+  const todos = useSelector((state: RootState) => state);
   const dispatch = useDispatch();
-  console.log(todos);
 
   const formik = useFormik({
     initialValues: {
-      todo: '',
+      id: uuid(),
+      content: '',
+      done: false
     },
     onSubmit: values => {
-      console.log(dispatch(addTodo(values.todo)))
-      console.log(values.todo)
+    dispatch(addTodo(values))
     },
     })
 
+    function checked(l: any, item: string){
+      l.classList.toggle('through');
+      dispatch(changeDone(item))
+    }
+
+    console.log(todos)
     return (
         <div>
             <div className="container">
@@ -30,11 +39,11 @@ export function Second() {
                     <h1 className="heading__title">To-Do List</h1>
                 </div>
                 <form className="form" onSubmit={formik.handleSubmit}>
-                    <label className="form__label" htmlFor="todo">~ Today I need to ~</label>
+                    <label className="form__label" htmlFor="content">~ Today I need to ~</label>
                     <input className="form__input"
                            type="text"
-                           id="todo"
-                           name="todo"
+                           id="content"
+                           name="content"
                            onChange={formik.handleChange}
                            onBlur={formik.handleBlur}
                            required
@@ -42,9 +51,9 @@ export function Second() {
                     <button className="button"><span>Submit</span></button>
                 </form>
                 <div>
-                    <ul className="toDoList">
-                        {todos.map((item, index) => (
-                            <li key={JSON.stringify(item.content + index)}>{item.content}</li>
+                    <ul className="toDoList"> 
+                        {todos.map((item) => (
+                            <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)}>{item.content}</li>
                         ))}
                     </ul>
                 </div>

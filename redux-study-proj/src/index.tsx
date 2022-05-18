@@ -7,7 +7,6 @@ import App from './App';
 import { store } from "./store/toolkit";
 
 import './reset.css';
-import './index.css';
 
 
 const root = ReactDOM.createRoot(
