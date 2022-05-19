@@ -16,7 +16,7 @@ export function Second() {
 
   const formik = useFormik({
     initialValues: {
-      id: uuid(),
+    //   id: uuid(),
       content: '',
       done: false
     },
@@ -25,7 +25,7 @@ export function Second() {
     },
     })
 
-    function checked(l: any, item: string){
+    function checked(l: any, item: number){
       l.classList.toggle('through');
       dispatch(changeDone(item))
     }
@@ -55,9 +55,9 @@ export function Second() {
                 </form>
                 <div>
                     <ul className="toDoList"> 
-                        {todos.map((item) => (
-                           item.done ? <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)} data-completed={item.done} className='through'>{item.content}</li> :
-                           <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)} data-completed={item.done}>{item.content}</li>
+                        {todos.map((item, index) => (
+                           item.done ? <li onDoubleClick={()=>dispatch(deleteTodo(index))} onClick={(e) => checked(e.target, index)} data-completed={item.done} className='through'>{item.content}</li> :
+                           <li onDoubleClick={()=>dispatch(deleteTodo(index))} onClick={(e) => checked(e.target, index)} data-completed={item.done}>{item.content}</li>
                         //    <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)} data-completed={item.done} >{item.content}</li>
                         ))}
 
