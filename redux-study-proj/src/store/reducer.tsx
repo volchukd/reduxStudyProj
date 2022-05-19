@@ -13,6 +13,16 @@ const initialState = [
     content: 'make your first todo!',
     done: false,
   },
+  {
+    id: uuid(),
+    content: 'double click to delete',
+    done: false,
+  },
+  {
+    id: uuid(),
+    content: 'click to line-throughç',
+    done: true,
+  }
 ] as State[];
 
 
