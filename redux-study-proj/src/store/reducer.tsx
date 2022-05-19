@@ -3,11 +3,11 @@ import { v4 as uuid } from 'uuid';
 
 export interface State {
     id: string,
-    content: string, 
-    done: boolean 
+    content: string,
+    done: boolean
 }
 
-const initialState = [
+const initialState: State[] = [
   {
     id: uuid(),
     content: 'make your first todo!',
@@ -20,10 +20,10 @@ const initialState = [
   },
   {
     id: uuid(),
-    content: 'click to line-throughç',
+    content: 'click to line-through',
     done: true,
   }
-] as State[];
+];
 
 
 
