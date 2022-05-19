@@ -20,7 +20,7 @@ const initialState = [
   },
   {
     // id: uuid(),
-    content: 'click to line-throughç',
+    content: 'click to line-through',
     done: true,
   }
 ] as State[];
