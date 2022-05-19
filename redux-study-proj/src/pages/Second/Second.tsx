@@ -31,6 +31,9 @@ export function Second() {
     }
 
     console.log(todos)
+
+    
+
     return (
         <div>
             <div className="container">
@@ -53,8 +56,11 @@ export function Second() {
                 <div>
                     <ul className="toDoList"> 
                         {todos.map((item) => (
-                            <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)}>{item.content}</li>
+                           item.done ? <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)} data-completed={item.done} className='through'>{item.content}</li> :
+                           <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)} data-completed={item.done}>{item.content}</li>
+                        //    <li onDoubleClick={()=>dispatch(deleteTodo(item.id))} onClick={(e) => checked(e.target, item.id)} data-completed={item.done} >{item.content}</li>
                         ))}
+
                     </ul>
                 </div>
             </div>
