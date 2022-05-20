@@ -114,6 +114,7 @@ body {
     position: relative;
     padding: 0.5rem;
     margin-left: 16px;
+    width: fit-content;
 }
 .toDoList > li:hover {
     text-decoration: line-through wavy #24bffb;

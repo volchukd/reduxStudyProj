@@ -7,7 +7,7 @@ export interface State {
     done: boolean 
 }
 
-const initialState = [
+const initialState: State[] = [
   {
     // id: uuid(),
     content: 'make your first todo!',
@@ -23,7 +23,7 @@ const initialState = [
     content: 'click to line-through',
     done: true,
   }
-] as State[];
+];
 
 
 
